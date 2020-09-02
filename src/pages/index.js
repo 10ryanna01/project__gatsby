@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import BookItem from "../components/BookItem";
 
 const IndexPage = (props) => {
   console.log(props);
@@ -15,11 +16,14 @@ const IndexPage = (props) => {
         <h2>
           {edge.node.title} - <small>{edge.node.author.name} </small>
         </h2>
-      
-      
+            
       <div>
         {edge.node.summary} 
       </div>
+
+      <Link to={`/book/${edge.node.id}`}>
+        join conversation
+      </Link>
       </div>
     ))}
 
@@ -32,7 +36,7 @@ export const query = graphql`
   allBook {
     edges {
       node {
-        summer
+        summary
         title
         id
         author {
