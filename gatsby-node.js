@@ -1,24 +1,33 @@
 const path = require('path');
 
 // dynamically create pages and call in components that make the page layout
-exports.createPages = ({graphql,actions}) => {
+exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions;
     const bookTemplate = path.resolve('src/templates/bookTemplate.js');
     return graphql(`
-        {
-            allBook {
-            edges {
-                node {
-                summary
-                title
-                id
-                author {
-                    name
+    query MyQuery {
+        allBook {
+          edges {
+            node {
+              summary
+              title
+              localImage {
+                childImageSharp{
+                  fixed(width: 200){
+                    src
+                  }
                 }
-                }
+              }
+              id
+              author {
+                name
+              }
             }
-            }
+          }
         }
+      }
+      
+      
      
      
      `).then((result) => {
@@ -36,7 +45,7 @@ exports.createPages = ({graphql,actions}) => {
             })
         });
     })
-    
-//  closes exports actions   
+
+    //  closes exports actions   
 
 }

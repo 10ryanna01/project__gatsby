@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        gulp  asdfasd
+     
       </div>
     </>
   )
