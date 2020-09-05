@@ -35,7 +35,7 @@ padding-right: 8px;
 `
 
 const IndexPage = (props) => {
-  console.log(props);
+ 
   return (
     <Layout>
 
