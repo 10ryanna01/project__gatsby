@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from "../components/layout";
+ 
 import BookItem from "../components/BookItem";
 import {graphql} from 'gatsby';
 
@@ -8,14 +8,14 @@ const BookTemplate = (props) => {
 
     console.log(props.data);
     return (
-        <Layout>
+        <section>
            <BookItem
                 bookCover={props.data.book.localImage.childImageSharp.fixed}
                 auhorName={props.data.book.author.name}
                 bookSummary={props.data.book.summary}
                 bookTitle={props.data.book.title} /> 
  
-        </Layout>
+        </section>
 
     )
 

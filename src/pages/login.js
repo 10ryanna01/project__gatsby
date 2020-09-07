@@ -1,9 +1,10 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
+import {FirebaseContext} from "../components/Firebase"; 
 import { Link } from "gatsby"
 import styled from 'styled-components';
-import Layout from "../components/layout"
+
 import SEO from "../components/seo"
-import {useAuth} from "../components/Firebase"; 
+
 
 
 const Gt__LoginWrapper = styled.section`
@@ -35,9 +36,9 @@ button {
 `;
 
 
-const SecondPage = () => {
+const Login = () => {
     const [formValues, setFormValues] = useState({email: '', password: '' });
-    const {firebase} = useAuth();
+    const {firebase} = useContext(FirebaseContext); 
 
     function handleSubmit(e){ 
         e.preventDefault();
@@ -55,7 +56,7 @@ const SecondPage = () => {
 
  
   return(
-  <Layout> 
+  <section> 
  
     <form onSubmit ={handleSubmit}>
         <input value={formValues.email} name="email" onChange={handleInputChange} placeholder="email" />
@@ -64,9 +65,9 @@ const SecondPage = () => {
 
     </form>
      
-  </Layout>
+  </section>
 ); 
 
 }
 
-export default SecondPage
+export default Login
