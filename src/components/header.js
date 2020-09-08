@@ -11,6 +11,8 @@ const LogoutLink = styled.span`
 const LoginLink = styled.div`
 text-transform: capitalize;
 &:hover{ text-decoration: underline; }
+
+* { text-transform: capitalize ;}
  
 `;
 const UserInfo = styled.div`
@@ -18,6 +20,15 @@ const UserInfo = styled.div`
   div  {  text-transform: capitalize;}
 `;
 
+
+const Divider = styled.span`
+
+margin: 0 8px;
+padding-right: 1px;
+background: #F8A1D8; 
+ 
+
+`;
 
 const LoginWrapper = styled.div` 
  
@@ -64,12 +75,13 @@ const HeaderContent = styled.section`
   color: #ECFFFF;
   margin: auto 0;    
   text-align: right; 
-  
-  a, span  {     color: #F8A1D8;   #hover:  #F25B6A;
-      &: hover{
-        text-decoration: underline;
-      }}
+  text-transform: capitalize;
+
+  a, span, span a { text-transform: capitalize; color: #F8A1D8; #hover: #F25B6A;}
+      &: hover{ text-decoration: underline; }
+    
 }
+
 //end header wrapp
 
 `;
@@ -107,9 +119,13 @@ const Header = ({ siteTitle }) => {
 
         {(!user || !user.email) &&
           <LoginLink className="links__loginlogout">
-            <Link to="/login">
-              login
-            </Link>
+              <Link to="/login">
+                login
+              </Link>
+          <Divider /> 
+              <Link to="/register">
+                register
+              </Link>
           </LoginLink>
 
         } 

@@ -2,7 +2,7 @@ import React, {useState, useContext} from "react"
 import {FirebaseContext} from "../components/Firebase"; 
 import { Link } from "gatsby"
 import styled from 'styled-components';
-
+import {Form, Button, Input} from '../components/common';
 import SEO from "../components/seo"
 
 
@@ -58,12 +58,12 @@ const Login = () => {
   return(
   <section> 
  
-    <form onSubmit ={handleSubmit}>
-        <input value={formValues.email} name="email" onChange={handleInputChange} placeholder="email" />
-        <input value={formValues.password} name="password" onChange={handleInputChange} placeholder="password" type="password" /> 
-    <button type="submit">login</button> 
+    <Form onSubmit ={handleSubmit}>
+        <Input value={formValues.email} name="email" onChange={handleInputChange} placeholder="email" />
+        <Input value={formValues.password} name="password" onChange={handleInputChange} placeholder="password" type="password" /> 
+    <Button type="submit" block>login</Button> 
 
-    </form>
+    </Form>
      
   </section>
 ); 
