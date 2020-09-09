@@ -89,7 +89,7 @@ const HeaderContent = styled.section`
 
 const Header = ({ siteTitle }) => {
   const { firebase, user } = useContext(FirebaseContext)
-  console.log(firebase, user);
+  console.log(user);
 
 
   // calls in firebasecontext as decalred above
@@ -108,7 +108,7 @@ const Header = ({ siteTitle }) => {
         <UserInfo>
           {!!user && !!user.email &&
             <LoginWrapper>
-              hello, {user.email} 
+              hello, {user.username || user.email} 
                 <LogoutLink onClick={handelLogoutClick} className="links__loginlogout">
                   logout
                 </LogoutLink>
