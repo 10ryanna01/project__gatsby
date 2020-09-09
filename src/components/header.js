@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import React, { useContext } from "react"
 import { FirebaseContext } from './Firebase';
 import styled from 'styled-components';
+import "./styles.scss"
 
 const LogoutLink = styled.span` 
     &:hover{ text-decoration: underline; }

@@ -2,7 +2,7 @@ import React, {useState, useContext} from "react"
 import {FirebaseContext} from "../components/Firebase"; 
 import { Link } from "gatsby"
 import styled from 'styled-components';
-import {Form, Button, Input} from '../components/common';
+import {Form, Button, Input, ErrorMessage} from '../components/common';
 import SEO from "../components/seo"
 
 
@@ -39,14 +39,19 @@ button {
 const Login = () => {
     const [formValues, setFormValues] = useState({email: '', password: '' });
     const {firebase} = useContext(FirebaseContext); 
+    const [errorMessage, SetErrorMessage] = useState('');
 
     function handleSubmit(e){ 
         e.preventDefault();
-        firebase.login({email: formValues.email, password: formValues.password});
+        firebase.login({email: formValues.email, password: formValues.password}).catch(error =>{
+            console.log(error);
+            SetErrorMessage(error.message);
+        });
     }
 
     function handleInputChange(e){
         e.persist();
+        SetErrorMessage('');
         setFormValues(currentValues => ({
         ...currentValues,
         [e.target.name]: e.target.value
@@ -59,8 +64,13 @@ const Login = () => {
   <section> 
  
     <Form onSubmit ={handleSubmit}>
-        <Input value={formValues.email} name="email" onChange={handleInputChange} placeholder="email" />
-        <Input value={formValues.password} name="password" onChange={handleInputChange} placeholder="password" type="password" /> 
+        <Input required  value={formValues.email} name="email" onChange={handleInputChange} placeholder="email" />
+        <Input required value={formValues.password} name="password" onChange={handleInputChange} placeholder="password" type="password" /> 
+        {!!errorMessage &&
+            <ErrorMessage>
+                {errorMessage}
+            </ErrorMessage>
+         }
     <Button type="submit" block>login</Button> 
 
     </Form>
