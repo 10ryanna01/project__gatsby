@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import styled from 'styled-components'
+import {Button} from './Button';
+import {Input} from './Input';
 
 export const BookComments = ({firebase, bookId}) => {
     
-    
+  
 const CommentListItem = styled.div`
 
 
@@ -17,11 +19,25 @@ const CommentListItem = styled.div`
 
 
     display: block;
-    border: 11px solid #69695F;
+    border: 11px solid #010005;
     border-radius: 4px;
     padding:0.5rem;
 
 `; 
+
+
+const CommentForm = styled.div`
+
+display: flex;
+margin-top: 1.0rem;
+margin-bottom: 1.0rem; 
+
+${Button}{
+    margin-left: 30px;
+}
+
+`;
+
 
 
 const CommentListItemAuthor = styled.h3`
@@ -31,6 +47,7 @@ const CommentListItemAuthor = styled.h3`
     letter-spacing: 1px;
     font-size: 0.8rem;
     text-transform: capitalize;
+    margin-bottom: 0.5rem;
 
  `;
 
@@ -42,6 +59,15 @@ const CommentListItemAuthor = styled.h3`
  
  `;
 
+ const CommentListTitle = styled.h2`
+ 
+ text-align: left;
+ font-size: 1.1rem; 
+ letter-spacing: 1px;
+ color: #F8A1D8; 
+ 
+ `;
+
 
  
 
@@ -50,15 +76,21 @@ const CommentListItemAuthor = styled.h3`
     return (
         <div>
 
+        <CommentForm>
+            <Input/>
+            <Button>post comment</Button>
+        </CommentForm>
+
         <CommentListItem>
-            <CommentListItemAuthor>
-            comment author
-            </CommentListItemAuthor>
-            <CommentListItemText>            
-            this is a test coment
-            </CommentListItemText> 
             
-        </CommentListItem>
+            <CommentListTitle>Comments</CommentListTitle>
+                <CommentListItemAuthor>
+                    comment author
+                </CommentListItemAuthor>
+                <CommentListItemText>            
+                    this is a test coment
+                </CommentListItemText>  
+            </CommentListItem>
         </div>
 
     )
